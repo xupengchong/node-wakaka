@@ -1,0 +1,15 @@
+{
+  "name": "wakaka",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node ./main.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-proxy-middleware": "2.0.1",
+    "mysql": "^2.18.1"
+  }
+}

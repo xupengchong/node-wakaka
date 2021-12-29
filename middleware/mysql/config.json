@@ -1,0 +1,8 @@
+{
+  "dbost": "localhost",
+  "port": 3306,
+  "user": "root",
+  "password": "",
+  "db": "wakaka",
+  "maxConnLimit": 60
+}
