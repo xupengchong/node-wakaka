@@ -1,18 +1,7 @@
-// 固定账号信息
-// const users = [
-//   { name: 'admin', password: '123456', token: 'admin', info: {
-//       name: '系统管理员'
-//     }},
-//   { name: 'editor', password: '123456', token: 'editor', info: {
-//       name: '编辑人员'
-//     }},
-//   { name: 'test', password: '123456', token: 'test', info: {
-//       name: '测试人员'
-//     }},
-// ]
+
 import {sqlQuery} from '../middleware/mysql/db.js';
-
-
+import JwtUtil from '../utils/jwt/jwt.js'
+// 获取登录信息
 let userF = (name , password)=>{
   return new Promise((r,j)=>{
     /**
@@ -33,13 +22,18 @@ let userF = (name , password)=>{
 // 登录
 export const login = async (req, res) => {
   let {name , password } = req.body
-  let user = await userF(name , password)
-  // 获取登录信息匹配的项
+  let user = await userF(name , password)  // 查询登录
   console.log(user,31)
-
   // 返回 参数
-  if (user) {
-      let dataOrigin = res.setResData({token: user.token}, 200, "登录成功")
+  if (user.length) {
+      // 登陆成功，添加token验证
+      let _id = user[0].id.toString();  /// jwt有错误等待解决
+      // 将用户id传入并生成token
+      let jwt = new JwtUtil(_id);
+      let token = jwt.generateToken();
+    console.log('token:'+ token)
+      // 将 token 返回给客户端
+      let dataOrigin = res.setResData({token}, 200, "登录成功")
       res.json(dataOrigin)
   } else {
     let dataOrigin = res.setResData({}, 401, "用户名或密码错误")

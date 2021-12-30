@@ -1,6 +1,7 @@
 /**
  * 数据库模块
  */
+import mysql from "mysql";
 import * as fs from 'fs';
 let  configs = fs.readFileSync('middleware/mysql/config.json', 'utf8');
 let config = JSON.parse(configs);
@@ -16,7 +17,7 @@ let options = {
   'bigNumberStrings': true
 };
 
-import mysql from "mysql";
+
 
 let pool = mysql.createPool(options);
 
