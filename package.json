@@ -8,9 +8,30 @@
     "dev": "nodemon ./main.js"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "6.7.2",
     "express": "^4.17.1",
     "http-proxy-middleware": "2.0.1",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodejs-websocket": "^1.7.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "indent": [
+        1,
+        2
+      ]
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "parserOptions": {
+        "ecmaVersion": "es6"
+      }
+    }
   }
 }

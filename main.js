@@ -1,7 +1,7 @@
 import express from "express";
 import router from "./router/index.js";
 import resextra from "./middleware/unifyResFormat.js"
-
+import {webServer} from "./middleware/websocket.js"
 
 const app = express()
 // 通过 express.urlencoded() 这个中间件，来解析表单中的 url-encoded 格式的数据
@@ -19,7 +19,8 @@ app.use(express.json())
  * */
 
 app.use(resextra)
- // 跨域
+// webServer()
+// 跨域
 // app.all('*', function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
